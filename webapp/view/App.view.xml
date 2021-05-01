@@ -1,0 +1,35 @@
+<mvc:View controllerName="opensap.movies.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}" floatingFooter="true">
+					<content>
+						<Image src="images/MoviesHeader.png" tooltip="Movie illustration" width="100%"></Image>
+
+						<Label text="City" labelFor="city" />
+						<SearchField id="city" showSearchButton="false" placeholder="Enter City" />
+
+						<Label text="Genre" labelFor="genre" />
+						<Select id="genre">
+							<core:ListItem icon="sap-icon://video" key="" text="All" />
+							<core:ListItem icon="sap-icon://physical-activity" key="Action" text="Action" />
+							<core:ListItem icon="sap-icon://electrocardiogram" key="Horror" text="Horror" />
+							<core:ListItem icon="sap-icon://paper-plane" key="SienceFiction" text="Science Fiction" />
+						</Select>
+
+						<Label />
+						<Button text="Find Movies" class="sapUiSmallMarginTop" type="Emphasized" />
+
+					</content>
+					<footer>
+						<OverflowToolbar>
+							<ToolbarSpacer />
+							<Link text="{i18n>IMDb}" href="https://www.imdb.com/" target="_blank" />
+							<ToolbarSpacer />
+						</OverflowToolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
