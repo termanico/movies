@@ -79,20 +79,26 @@
       },
       "routes": [
         {
-          "name": "RouteApp",
-          "pattern": "RouteApp",
-          "target": [
-            "TargetApp"
-          ]
+          "name": "Home",
+          "pattern": "",
+          "target": "Home"
+        },
+        {
+          "name": "Detail",
+          "pattern": "movies/{movieId}/appointments/{appointmentId}",
+          "titleTarget": "",
+          "greedy": false,
+          "target": "Detail"
         }
       ],
       "targets": {
-        "TargetApp": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "App",
-          "viewName": "App"
+        "Home": {
+          "viewId": "home",
+          "viewName": "Home"
+        },
+        "Detail": {
+          "viewId": "detail",
+          "viewName": "Detail"
         }
       }
     }

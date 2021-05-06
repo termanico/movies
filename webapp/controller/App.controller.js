@@ -3,13 +3,14 @@ sap.ui.define([
 	"sap/base/Log",
 	"../model/formatter",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator"
+	"sap/ui/model/FilterOperator",
+	"sap/ui/core/UIComponent"
 	// "sap/m/MessageToast"
 ],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (Controller, Log, formatter, Filter, FilterOperator) { //, MessageToast) {
+	function (Controller, Log, formatter, Filter, FilterOperator, UIComponent) { //, MessageToast) {
 		"use strict";
 
 		function onInit() {
@@ -56,7 +57,17 @@ sap.ui.define([
 				var oAppointmentsBinding = oItem.getBinding("appointments");
 				oAppointmentsBinding.filter(oFilterCity);
 			});
+		}
 
+		function onAppointmentSelect(oAppointment) {
+			var oContext = oAppointment.getBindingContext("movies"),
+				sPath = oContext.getPath();
+
+			var aParameters = sPath.split("/");
+			UIComponent.getRouterFor(this).navTo("Detail", {
+				movieId: aParameters[2],
+				appointmentId: aParameters[4]
+			});
 		}
 
 		return Controller.extend("opensap.movies.controller.App", {
@@ -65,6 +76,7 @@ sap.ui.define([
 			onBeforeRendering: onBeforeRendering,
 			onAfterRendering: onAfterRendering,
 			onExit: onExit,
-			onPress: onPress
+			onPress: onPress,
+			onAppointmentSelect: onAppointmentSelect
 		});
 	});
