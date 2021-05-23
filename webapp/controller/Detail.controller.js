@@ -10,7 +10,7 @@ sap.ui.define([
      * @memberOf opensap.movies.view.Detail
      */
     function onInit() {
-        UIComponent.getRouterFor(this).getRoute("Detail").attachPatternMatched(this._onDetailMatched, this);
+        UIComponent.getRouterFor(this).getRoute("Detail").attachPatternMatched(_onDetailMatched.bind(this), this);
     }
 
     function _onDetailMatched(oEvent) {
@@ -22,7 +22,7 @@ sap.ui.define([
             path: "/movies/" + sMovieIndex + "/appointments/" + sAppointmentIndex,
             model: "movies",
             events: {
-                change: this._onBindingChange.bind(this)
+                change: _onBindingChange.bind(this)
             }
         });
     }
