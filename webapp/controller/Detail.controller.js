@@ -13,6 +13,10 @@ sap.ui.define([
         UIComponent.getRouterFor(this).getRoute("Detail").attachPatternMatched(_onDetailMatched.bind(this), this);
     }
 
+    function onNavBack() {
+        UIComponent.getRouterFor(this).navTo("Home");
+    }
+
     function _onDetailMatched(oEvent) {
         var oView = this.getView(),
             sMovieIndex = oEvent.getParameter("arguments")["movieId"],
@@ -36,10 +40,6 @@ sap.ui.define([
         if (!oView.getModel("movies").getObject(sPath)) {
             //See Challenge at the end: 	UIComponent.getRouterFor(this).getTargets().display("NotFound");
         }
-    }
-
-    function onNavBack() {
-        UIComponent.getRouterFor(this).navTo("Home");
     }
 
     return Controller.extend("opensap.movies.controller.Detail", {
